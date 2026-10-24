@@ -1,0 +1,87 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // -------------------------------------------------------------------------
+    // 1. GLOBAL SAFETY NET
+    // -------------------------------------------------------------------------
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // -------------------------------------------------------------------------
+    // 2. REUSABLE PRIMITIVES
+    // -------------------------------------------------------------------------
+    function isSignedIn() { return request.auth != null; }
+    function isOwner(userId) { return isSignedIn() && request.auth.uid == userId; }
+    
+    // Designated Admin Check
+    function isAdmin() { 
+      return isSignedIn() && (
+        request.auth.token.email == 'durgesh00991@gmail.com' ||
+        request.auth.token.email == 'dharmendradharmendrapal640@gmail.com' ||
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+      );
+    }
+
+    // -------------------------------------------------------------------------
+    // 3. COLLECTION MATCHES
+    // -------------------------------------------------------------------------
+
+    // Users
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    // Customer Profiles
+    match /customerProfiles/{userId} {
+      allow read, write: if true;
+    }
+
+    // Provider Profiles (Hyperlocal Directory)
+    match /providerProfiles/{providerId} {
+      allow read, write: if true;
+    }
+
+    // Service Categories
+    match /serviceCategories/{categoryId} {
+      allow read, write: if true;
+    }
+
+    // Bookings
+    match /bookings/{bookingId} {
+      allow read, list, create, update, delete: if true;
+    }
+
+    // Conversations & Messages
+    match /conversations/{chatId} {
+      allow read, write: if true;
+    }
+
+    match /conversations/{chatId}/messages/{messageId} {
+      allow read, write: if true;
+    }
+
+    // Consultation Reports
+    match /reports/{reportId} {
+      allow read, write: if true;
+    }
+
+    // Community Posts
+    match /communityPosts/{postId} {
+      allow read, write: if true;
+    }
+
+    // Audit Logs
+    match /auditLogs/{logId} {
+      allow read: if isAdmin();
+      allow create: if isAdmin();
+    }
+
+    // Admin List
+    match /admins/{userId} {
+      allow read: if isSignedIn();
+      allow write: if false;
+    }
+  }
+}

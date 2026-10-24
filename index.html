@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Gracefully suppress expected container reverse proxy WebSocket disconnect noise
+      window.addEventListener('unhandledrejection', function(event) {
+        var reason = event && event.reason;
+        var msg = reason && (reason.message || String(reason)) || '';
+        if (msg.indexOf('WebSocket') !== -1 || msg.indexOf('@vite/client') !== -1) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      });
+      window.addEventListener('error', function(event) {
+        var msg = (event && (event.message || '')) + '';
+        if (msg.indexOf('WebSocket') !== -1 || msg.indexOf('@vite/client') !== -1) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        }
+      });
+    </script>
+    <script>
+      // Synchronously set initial dark/light theme before CSS renders to avoid flash
+      (function() {
+        try {
+          var saved = localStorage.getItem('apnalocal_theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark = saved === 'dark' || (!saved && prefersDark);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+            document.documentElement.setAttribute('data-theme', 'dark');
+            document.documentElement.style.colorScheme = 'dark';
+          } else {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.documentElement.setAttribute('data-theme', 'light');
+            document.documentElement.style.colorScheme = 'light';
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <title>ApnaLocal - Har Zaroorat Ka Local Solution</title>
+    <meta name="description" content="AI-Powered Hyperlocal Services & Community Assistance Platform for Jaunpur. Har Zaroorat Ka Local Solution." />
+    <meta property="og:title" content="ApnaLocal - Jaunpur" />
+    <meta property="og:description" content="Find trusted local professionals in Jaunpur, UP." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="ApnaLocal" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="icon" type="image/png" href="/icon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

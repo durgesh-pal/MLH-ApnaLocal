@@ -1,0 +1,654 @@
+# MASTER BUILD PROMPT — APNALOCAL AI
+## AI-Powered Hyperlocal Services & Community Assistance Platform
+
+Act as a senior full-stack engineer, AI engineer, product designer, database architect, security engineer and QA engineer.
+
+Build a polished, functional, mobile-first web application named **ApnaLocal**, launching initially in **Jaunpur, Uttar Pradesh, India**.
+
+Tagline: **“Har Zaroorat Ka Local Solution.”**
+
+This is not a static landing page, UI mockup, or collection of disconnected demo screens. Build an integrated working MVP with functional customer, service-provider and admin workflows, persistent data, and meaningful AI-powered features.
+
+If an existing ApnaLocal project is open, inspect and improve the existing project. Preserve useful existing work, reuse compatible components and avoid unnecessarily rewriting working code. If starting from scratch, establish a clean project architecture.
+
+## 1. PRODUCT VISION
+
+ApnaLocal solves everyday neighborhood problems by connecting residents with nearby, available, trustworthy service providers.
+
+Examples:
+- A leaking tap requires a plumber.
+- A faulty switch requires an electrician.
+- A broken chair needs a carpenter.
+- A student needs a local tutor.
+- Someone needs AC, RO, appliance, vehicle or mobile repair.
+- A resident needs cleaning, pest control, beauty services or other household assistance.
+- A user cannot find a provider and wants to publish a service request.
+- A resident wants local recommendations or to post a lost-and-found notice.
+
+Build a marketplace that supports small jobs, consultations, appointments, service requests and community assistance.
+
+Primary language: English, with Hindi language support and an architecture that can support additional Indian languages later.
+
+Currency: INR (₹). Timezone: Asia/Kolkata. Initial location: Jaunpur, Uttar Pradesh.
+
+Never fabricate real users, real verification, real reviews or real availability. Clearly label seed records as demo data until genuine users and providers join.
+
+## 2. REQUIRED TECHNOLOGY
+
+Use the following preferred stack where compatible with the current project:
+
+- Frontend: React, Vite and TypeScript.
+- Styling: Tailwind CSS and shadcn/ui or accessible equivalent components.
+- Icons: Lucide.
+- Routing: React Router.
+- Backend and persistent database: Convex.
+- Authentication: Convex Auth or a compatible secure authentication implementation supported by the current environment.
+- AI: A supported LLM API accessed exclusively through a secure server-side function.
+- Maps: Leaflet and OpenStreetMap.
+- Forms and validation: React Hook Form and Zod, or equivalent.
+- Notifications: Persistent in-app notifications; add push notifications only when supported.
+- Charts: Recharts if analytics requires them.
+- Deployment: Bolt's supported deployment workflow or a compatible hosting platform.
+
+Inspect the current Bolt environment and installed dependencies before making architectural decisions. If a listed package is incompatible, choose the nearest maintained alternative and explain the change.
+
+Do not claim a third-party service is connected until it is actually configured and tested.
+
+## 3. VISUAL DESIGN AND USER EXPERIENCE
+
+Create a polished, modern Indian startup design.
+
+Visual direction:
+- Professional navy, blue, white and restrained green accents.
+- Warm, welcoming local-community branding.
+- Clear typography, consistent spacing and rounded cards.
+- Excellent mobile usability and responsive layouts.
+- Attractive empty states, skeleton loaders, error states and success messages.
+- Subtle animations, not excessive animation.
+- Accessible contrast, keyboard navigation and visible focus states.
+- Touch-friendly controls and bottom navigation on mobile.
+- Desktop sidebar navigation where appropriate.
+
+Brand:
+- Name: ApnaLocal.
+- Tagline: Har Zaroorat Ka Local Solution.
+- Logo: A simple home/location symbol combined with a helpful community identity.
+- Location badge: Jaunpur, UP.
+- Use professional service icons and suitable royalty-free or generated visuals.
+
+Create the following pages:
+
+1. Landing page.
+2. Sign up and login.
+3. Customer home dashboard.
+4. Service categories.
+5. Provider search and filters.
+6. Provider profile.
+7. AI assistant.
+8. Create a service request.
+9. Booking form and confirmation.
+10. My bookings and booking details.
+11. Chat and notifications.
+12. Community help and lost-and-found.
+13. Customer profile and settings.
+14. Provider registration and onboarding.
+15. Provider dashboard.
+16. Provider availability and service management.
+17. Provider booking management.
+18. Provider earnings and job history.
+19. Provider verification status.
+20. Admin dashboard.
+21. Admin provider verification queue.
+22. Admin users, categories, bookings, reports and complaints.
+23. Privacy policy, terms and safety guidelines.
+24. Not-found and error pages.
+
+All navigation elements, buttons, forms and dialogs must work. Do not leave dead buttons or empty placeholder routes.
+
+## 4. THREE DISTINCT USER ROLES
+
+### A. CUSTOMER
+
+Customers must be able to:
+
+- Register, log in and securely log out.
+- Manage their name, phone number, preferred language and locality.
+- Search nearby service providers.
+- Browse categories and view provider details.
+- See provider service areas, prices, ratings, working hours and verification status.
+- Describe a problem in natural language.
+- Upload an optional problem photograph where supported.
+- Ask the AI assistant for service recommendations.
+- Receive relevant provider matches.
+- Compare suitable professionals.
+- Create and submit a booking request.
+- Select an appointment date and available time slot.
+- Provide a service address and additional instructions.
+- View booking status and history.
+- Cancel a booking subject to transparent cancellation rules.
+- Communicate with the provider using in-app messaging.
+- Receive notifications when a booking changes.
+- Mark completed jobs and submit genuine reviews.
+- Create an unfulfilled service request if no provider is available.
+- Report inappropriate behavior or suspicious profiles.
+- Access local community notices and lost-and-found posts.
+
+The home dashboard should include:
+- Search bar: "Aapko kya chahiye?"
+- Current selected locality.
+- Service category grid.
+- AI assistant entry point.
+- Recommended nearby professionals.
+- Recently viewed services.
+- Active booking status.
+- Community assistance.
+- A prominent "Post a Service Request" option.
+
+### B. SERVICE PROVIDER
+
+Providers must be able to:
+
+- Register using their own account.
+- Create a professional profile.
+- Add name, photo, contact details and locality.
+- Select skills and service categories.
+- Add service descriptions and service areas.
+- Set base prices or price ranges.
+- Specify consultation fees where applicable.
+- Configure working hours and availability.
+- Add optional experience, qualifications and portfolio images.
+- Submit relevant verification documents securely.
+- View verification status: Pending, Approved or Rejected.
+- Receive booking requests.
+- Accept or reject requests.
+- Propose a different appointment time.
+- Update job status through the permitted lifecycle.
+- Message customers about accepted jobs.
+- View upcoming and completed bookings.
+- Track completed-job totals and earnings estimates.
+- Receive ratings and reviews from actual customers.
+- Pause their profile or mark themselves unavailable.
+- Manage complaints and contact platform support.
+
+Do not represent an unverified provider as verified. Display a clear badge only when the database contains an approved verification status.
+
+Provider dashboard sections:
+- Overview.
+- New requests.
+- Upcoming appointments.
+- Completed jobs.
+- Availability.
+- My services and pricing.
+- Verification.
+- Earnings.
+- Messages.
+- Profile and settings.
+
+### C. ADMIN
+
+Build a protected admin dashboard with role-based access control.
+
+Admins can:
+- View platform statistics.
+- Review and verify provider applications.
+- Inspect submitted verification records through authorized access.
+- Approve or reject provider verification with a reason.
+- Suspend fraudulent or abusive accounts.
+- Manage categories and service listings.
+- Review bookings and booking disputes.
+- Review complaints and reports.
+- Moderate community posts.
+- Review suspicious activity.
+- Manage featured categories and supported localities.
+- View analytics for bookings, active providers, completed jobs and request fulfillment.
+- Audit significant administrative actions.
+
+Use server-side authorization for every administrative operation. Hiding the admin interface in the frontend is not security.
+
+Do not expose document storage URLs, private identity documents, secrets or unnecessary customer contact information.
+
+## 5. AI FEATURES — A CORE PRODUCT CAPABILITY
+
+AI must provide practical assistance inside actual user workflows. Do not implement a chatbot that merely returns generic text.
+
+Create a dedicated AI assistant accessible from the customer dashboard and booking flow.
+
+### AI FEATURE 1: NATURAL-LANGUAGE PROBLEM UNDERSTANDING
+
+Allow users to describe a problem in Hindi, English or Hinglish.
+
+Example:
+"Mere kitchen ka nal leak kar raha hai aur mujhe aaj shaam plumber chahiye."
+
+The AI should extract structured information:
+- Problem summary.
+- Suggested service category.
+- Problem urgency.
+- Required professional skills.
+- Preferred date and time, if mentioned.
+- Approximate locality, if provided.
+- Follow-up questions.
+- Suggested next step.
+
+Use structured JSON output validated by a schema.
+
+Example output:
+{
+  "category": "Plumbing",
+  "problem_summary": "Kitchen tap is leaking",
+  "urgency": "normal",
+  "preferred_time": "today evening",
+  "missing_fields": ["service address"],
+  "follow_up_question": "Which locality in Jaunpur should the professional visit?"
+}
+
+This is illustrative only. Resolve dates using India time, validate output and ask the user to confirm any inferred booking details.
+
+The AI must not diagnose dangerous electrical, gas or structural issues as if it were a qualified professional.
+
+### AI FEATURE 2: SMART PROVIDER MATCHING
+
+Match users to actual providers stored in the database.
+
+Use a deterministic ranking algorithm, with AI assisting in category and skill interpretation.
+
+Possible ranking factors:
+- Category and skill match.
+- Provider availability for the requested time.
+- Service-area compatibility.
+- Distance when reliable coordinates are available.
+- Verification status.
+- Actual customer ratings and completed jobs.
+- Price compatibility.
+- Responsiveness, when reliable data exists.
+
+Explain why each provider is recommended.
+
+Example:
+"Recommended because this provider offers plumbing services in your locality and has an available appointment slot."
+
+Never invent ratings, prices, distances, credentials or availability.
+
+Do not let an LLM independently create fictional providers or bypass database filters.
+
+If no provider matches, show nearby-area options where appropriate or let the customer publish a service request.
+
+### AI FEATURE 3: SMART SERVICE REQUEST GENERATOR
+
+Allow users to describe their needs in everyday language.
+
+AI should:
+1. Summarize the request.
+2. Suggest the most appropriate category.
+3. Identify missing information.
+4. Ask concise clarification questions.
+5. Generate a clean service-request draft.
+6. Let the user edit and confirm it before publishing.
+
+Store the confirmed request in the database.
+
+### AI FEATURE 4: ESTIMATED PRICE GUIDANCE
+
+Provide an indicative price range only when supported by configured service pricing or sufficient relevant platform data.
+
+Use this priority:
+1. Provider's configured price range.
+2. Admin-configured category price guidance.
+3. Aggregated completed booking data, only when enough trustworthy records exist.
+
+Clearly label estimates as indicative, not guaranteed.
+
+If there is insufficient data, say that the provider will confirm the price.
+
+Never invent an exact quote or represent an AI estimate as a binding offer.
+
+### AI FEATURE 5: AI-ASSISTED BOOKING
+
+The assistant should guide users through:
+- Service category.
+- Problem description.
+- Preferred locality.
+- Preferred appointment time.
+- Provider selection.
+- Price expectations.
+- Final booking review.
+
+Before creating a booking, show a confirmation summary and require explicit user action.
+
+The AI must never silently book a service, send a message, cancel a booking or make a payment.
+
+The backend must validate provider availability and all booking details independently.
+
+### AI FEATURE 6: PROVIDER COPILOT
+
+Provide a provider-side AI assistant that can:
+- Summarize incoming service requests.
+- Identify the customer's stated problem and requested time.
+- Suggest a professional response.
+- Draft a polite clarification message.
+- Summarize the day's appointments.
+- Help improve service descriptions.
+- Suggest relevant profile completeness improvements.
+
+All messages must remain drafts until the provider confirms sending them.
+
+### AI FEATURE 7: MULTILINGUAL AI
+
+Support Hindi, English and Hinglish input where the selected model permits it.
+
+Respond in the user's preferred language.
+
+Keep language simple and respectful, especially for users who may not be comfortable with technology.
+
+Provide a fallback when AI is unavailable, including ordinary category search and manual booking.
+
+### AI SAFETY AND IMPLEMENTATION
+
+- Never expose the AI API key in browser code.
+- Use secure server-side API calls and environment secrets.
+- Validate input length and output schema.
+- Apply request limits and appropriate abuse protection.
+- Handle timeouts, malformed responses and provider outages.
+- Do not send private documents, passwords, OTPs or unnecessary personal data to the AI model.
+- Treat user messages and uploaded content as untrusted input.
+- Prevent prompt injection from changing authorization or application rules.
+- Never let the AI execute arbitrary database queries or privileged actions.
+- Provide transparent AI labels and make clear that AI recommendations can be imperfect.
+- Do not claim AI is active when no model key is configured.
+
+If AI credentials are missing, implement the server-side integration interface, setup instructions and an explicit demo/fallback mode. Never fake a successful live AI response.
+
+## 6. DATABASE DESIGN
+
+Design normalized, appropriately indexed database tables or Convex schema definitions for:
+
+- users
+- customerProfiles
+- providerProfiles
+- providerServices
+- serviceCategories
+- providerServiceAreas
+- providerAvailability
+- providerVerificationRecords
+- serviceRequests
+- bookings
+- bookingStatusHistory
+- conversations
+- messages
+- notifications
+- reviews
+- complaints
+- communityPosts
+- savedProviders
+- aiInteractionLogs, with minimal non-sensitive metadata
+- adminAuditLogs
+
+Add the required relationships, indexes, timestamps and status validation.
+
+Example booking statuses:
+- pending
+- accepted
+- rejected
+- reschedule_requested
+- confirmed
+- in_progress
+- completed
+- cancelled
+- disputed
+
+Define valid state transitions and authorized actors.
+
+Keep service requests separate from confirmed bookings.
+
+A provider's acceptance of a booking must revalidate availability. Prevent double-booking through backend validation and an appropriate concurrency-safe strategy.
+
+Persist important data in the backend. Use reactive updates where supported.
+
+Do not use localStorage as the source of truth for production accounts, bookings, roles or verification records.
+
+If temporary demo data is needed, seed clearly labeled sample providers and bookings through a safe, repeatable development seed process.
+
+## 7. AUTHENTICATION AND SECURITY
+
+Implement:
+- Secure sign-up and sign-in.
+- Session management.
+- Password reset if supported.
+- Email or phone verification where supported.
+- Customer, provider and admin role enforcement.
+- Server-side access checks on every sensitive operation.
+- Input validation.
+- Rate limiting where supported.
+- Safe file upload validation.
+- Private verification-document storage.
+- Secure environment-variable handling.
+- Protection against unauthorized record access.
+- Clear logout and unauthorized-access handling.
+
+Never create a public admin signup path.
+
+Create the initial administrator only through a secure setup procedure, such as a protected server-side seed process or explicit trusted account configuration.
+
+Do not hardcode admin credentials or secrets in the frontend or repository.
+
+For demo mode, clearly label the demo identity and ensure demo privileges cannot be mistaken for real administrative authorization.
+
+## 8. BOOKING AND AVAILABILITY ENGINE
+
+The booking flow must work end to end.
+
+1. Customer selects a provider and service.
+2. Customer enters problem details and address.
+3. Customer chooses an available date and slot.
+4. Server validates provider status and service-area compatibility.
+5. Server checks availability and existing bookings.
+6. Customer confirms the request.
+7. Booking is persisted.
+8. Provider receives an in-app notification.
+9. Provider accepts, rejects or proposes a new time.
+10. Customer receives the updated status.
+11. Accepted appointments are confirmed.
+12. Provider can mark work in progress and completed.
+13. Customer can review the completed service.
+
+Clearly distinguish a booking request from a confirmed appointment.
+
+Use server-authoritative timestamps. Apply appropriate cancellation rules and record status history.
+
+If a payment gateway is not configured, do not collect real payment details. Display a clear "Pay directly to provider" or "Payment integration coming soon" label as appropriate.
+
+## 9. LOCAL SEARCH AND MAPS
+
+Support Jaunpur localities and a data model that can expand to more towns.
+
+Search filters:
+- Service category.
+- Locality.
+- Availability.
+- Verified status.
+- Rating.
+- Price range.
+- Distance, only when reliable coordinates are available.
+
+Use Leaflet and OpenStreetMap where feasible.
+
+Allow manual locality and address entry even if location permission is denied.
+
+Do not require precise GPS access to use the app.
+
+Do not pretend to have live provider coordinates when only an approximate locality is available.
+
+Avoid excessive or unapproved map tile requests.
+
+## 10. CHAT AND NOTIFICATIONS
+
+Implement persistent in-app messaging between a customer and the relevant provider for an authorized booking or service request.
+
+Requirements:
+- Message history.
+- Sender and recipient identity.
+- Timestamps.
+- Read status where supported.
+- Appropriate access restrictions.
+- In-app notifications for new messages and booking status changes.
+- Basic reporting and blocking where appropriate.
+
+Use real-time updates if the backend supports them.
+
+Do not display fake live messages in production.
+
+Email, SMS, WhatsApp and browser push integrations must remain optional until the appropriate provider credentials, permissions and user consent are configured.
+
+## 11. COMMUNITY ASSISTANCE
+
+Add a neighborhood community section with:
+- Local recommendations.
+- Lost-and-found notices.
+- Non-emergency help requests.
+- Local service requests.
+- Community announcements.
+
+Users can create, edit and report permitted posts.
+
+Provide moderation, expiry dates and clear privacy warnings.
+
+Do not publish a user's phone number or exact home address publicly by default.
+
+For emergencies, clearly advise users to contact the appropriate local emergency service directly. ApnaLocal is not an emergency-response service.
+
+## 12. ADMIN ANALYTICS
+
+Show meaningful metrics computed from database records:
+- Total registered users.
+- Active providers.
+- Pending provider verifications.
+- Booking requests.
+- Confirmed appointments.
+- Completed jobs.
+- Cancellation rate.
+- Service-request fulfillment rate.
+- Most requested categories.
+- Complaint counts.
+
+Label seed/demo statistics appropriately.
+
+Do not fabricate real-time analytics or use hardcoded production statistics.
+
+## 13. ACCESSIBILITY, PERFORMANCE AND RELIABILITY
+
+- Mobile-first responsive layout.
+- Accessible labels and keyboard controls.
+- Form validation with understandable messages.
+- Loading, empty, success and error states.
+- Image optimization and safe upload limits.
+- Lazy-load heavy components when useful.
+- Avoid unnecessary API requests.
+- Handle network failures gracefully.
+- Use reusable components and typed interfaces.
+- Keep business logic out of presentational components.
+- Avoid duplicate code and excessive dependencies.
+- Do not suppress TypeScript errors to make the build pass.
+
+## 14. REQUIRED TESTING
+
+Implement and run available checks.
+
+At minimum test:
+- Customer registration and sign-in.
+- Provider onboarding.
+- Unauthorized admin access.
+- Provider verification.
+- Search and category filters.
+- AI structured response validation.
+- AI unavailable fallback.
+- Service-request creation.
+- Booking creation and persistence.
+- Provider accept/reject actions.
+- Booking status transitions.
+- Double-booking prevention.
+- Chat access restrictions.
+- Review eligibility.
+- Mobile layout.
+- Empty and error states.
+
+Run the project build, type checks, linting and available tests. Fix errors introduced by the implementation.
+
+Do not claim a test passed unless it was actually executed.
+
+## 15. IMPLEMENTATION WORKFLOW
+
+Work in the following order:
+
+Phase 1 — Inspect
+- Inspect the existing project, dependencies and environment.
+- Identify existing working features and missing functionality.
+- Write a concise implementation plan.
+
+Phase 2 — Build core UX
+- Implement the responsive design system.
+- Build all main pages and navigation.
+- Implement customer, provider and admin experiences.
+
+Phase 3 — Build backend
+- Configure schema, authentication and secure server functions.
+- Connect forms, queries and mutations to persistent data.
+- Implement permissions and booking state transitions.
+
+Phase 4 — Add AI
+- Build the server-side AI integration.
+- Implement problem understanding, matching, service-request generation, booking assistance and provider copilot.
+- Add structured validation, fallback and setup documentation.
+
+Phase 5 — Complete workflows
+- Connect search, booking, provider responses, notifications, reviews and community features.
+- Remove dead buttons and disconnected demo interactions.
+
+Phase 6 — Test and fix
+- Run available checks.
+- Fix build, type, runtime and workflow errors.
+- Check responsive behavior.
+- Verify access controls and persistence.
+
+Phase 7 — Deployment readiness
+- Document required environment variables.
+- Provide database setup and migration instructions.
+- Document AI provider configuration.
+- Prepare deployment configuration.
+- Clearly list remaining manual actions.
+
+Do not stop after producing a plan or landing page. Continue implementing the actual application within the available environment. If one phase requires user credentials or external authorization, complete all independent work first and explain the exact remaining setup step.
+
+## 16. DEFINITION OF DONE
+
+The MVP is ready for review when:
+
+- The app launches without build errors.
+- All main routes render.
+- Customer, provider and admin workflows are connected.
+- Authentication and role enforcement are implemented.
+- Service and booking data persist in the backend.
+- Booking status changes are validated and recorded.
+- AI works with a configured model or has a clearly labeled fallback.
+- Provider recommendations use actual stored records.
+- AI never silently confirms a booking.
+- Admin verification controls are protected.
+- Responsive mobile and desktop layouts work.
+- No important action is a dead button.
+- Demo data is clearly distinguished from real records.
+- Setup, testing and deployment instructions are documented.
+
+## 17. FINAL REPORT
+
+After implementation, report:
+1. Features actually completed.
+2. AI features working and the model integration used.
+3. Database and authentication status.
+4. Tests and build commands actually run, with results.
+5. Required environment variables, without revealing secret values.
+6. Any unfinished or blocked functionality.
+7. Exact steps for configuring AI credentials, creating the database and deploying.
+8. The local development command and deployment instructions.
+
+Be truthful about what works. Do not mark integrations as complete until they have been tested.
+
+Now inspect the current project and start implementing ApnaLocal. Prioritize a functional, secure and visually polished end-to-end MVP over decorative features.

@@ -1,0 +1,159 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Core user identity",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["customer", "provider", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "CustomerProfile": {
+      "title": "Customer Profile",
+      "description": "Additional details for customers",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "locality": { "type": "string" },
+        "preferredLanguage": { "type": "string" },
+        "address": { "type": "string" }
+      },
+      "required": ["userId"]
+    },
+    "ProviderProfile": {
+      "title": "Provider Profile",
+      "description": "Detailed profile for service providers",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "businessName": { "type": "string" },
+        "bio": { "type": "string" },
+        "categoryIds": { "type": "array", "items": { "type": "string" } },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "locality": { "type": "string" },
+        "serviceAreas": { "type": "array", "items": { "type": "string" } },
+        "workingHours": { "type": "object" },
+        "verificationStatus": { "type": "string", "enum": ["unverified", "pending", "verified", "rejected"] },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "integer" },
+        "completedJobs": { "type": "integer" }
+      },
+      "required": ["userId", "verificationStatus"]
+    },
+    "ServiceCategory": {
+      "title": "Service Category",
+      "description": "Categories of services offered",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": { "type": "string" },
+        "priceGuidance": { "type": "string" }
+      },
+      "required": ["name"]
+    },
+    "Booking": {
+      "title": "Booking",
+      "description": "Service booking record",
+      "type": "object",
+      "properties": {
+        "customerId": { "type": "string" },
+        "providerId": { "type": "string" },
+        "serviceId": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected", "reschedule_requested", "confirmed", "in_progress", "completed", "cancelled", "disputed"] },
+        "scheduledAt": { "type": "string", "format": "date-time" },
+        "problemDescription": { "type": "string" },
+        "address": { "type": "string" },
+        "price": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["customerId", "providerId", "status", "scheduledAt"]
+    },
+    "CommunityPost": {
+      "title": "Community Post",
+      "description": "Posts in the community section",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "type": { "type": "string", "enum": ["recommendation", "lost-found", "help", "announcement", "service-request"] },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "locality": { "type": "string" },
+        "urgency": { "type": "string" },
+        "aiAnalysis": { "type": "object" },
+        "status": { "type": "string", "enum": ["active", "fulfilled", "expired"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "expiresAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "type", "title", "content"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "1:1 chat between users",
+      "type": "object",
+      "properties": {
+        "participants": { "type": "array", "items": { "type": "string" } },
+        "lastMessage": { "type": "string" },
+        "lastMessageAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "relatedId": { "type": "string" },
+        "relatedType": { "type": "string", "enum": ["booking", "service-request", "general"] }
+      },
+      "required": ["participants", "updatedAt"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Chat message",
+      "type": "object",
+      "properties": {
+        "senderId": { "type": "string" },
+        "text": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "imageUrl": { "type": "string" }
+      },
+      "required": ["senderId", "text"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Core user records"
+    },
+    "/customerProfiles/{userId}": {
+      "schema": "CustomerProfile",
+      "description": "Customer specific metadata"
+    },
+    "/providerProfiles/{userId}": {
+      "schema": "ProviderProfile",
+      "description": "Provider specific metadata"
+    },
+    "/serviceCategories/{categoryId}": {
+      "schema": "ServiceCategory",
+      "description": "Available service categories"
+    },
+    "/bookings/{bookingId}": {
+      "schema": "Booking",
+      "description": "Service bookings"
+    },
+    "/communityPosts/{postId}": {
+      "schema": "CommunityPost",
+      "description": "Neighborhood community posts"
+    },
+    "/conversations/{chatId}": {
+      "schema": "Conversation",
+      "description": "1:1 conversations"
+    },
+    "/conversations/{chatId}/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Messages in a conversation"
+    }
+  }
+}

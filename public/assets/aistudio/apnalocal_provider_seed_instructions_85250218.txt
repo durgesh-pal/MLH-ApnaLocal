@@ -1,0 +1,11 @@
+APNALOCAL JAUNPUR DEMO PROVIDER SEED
+- CSV: spreadsheet/import format
+- JSON: structured seed format
+- 14 localities x 8 categories x 4 demo slots = 448 fictional records
+
+IMPORTANT: These are NOT real people and NOT collected real-world listings.
+Phone, WhatsApp, email, exact address, actual experience and ratings are blank.
+Use only to test UI, search, filters, coverage dashboard and admin workflows.
+Do not publish as real providers. Replace with genuine providers' consented details and verify them before production.
+Show a visible "Demo profile — not a real/verified provider" label for these records.
+Set target_provider_count = 5 per locality/category; four demo slots are seeded, leaving one target slot open.
