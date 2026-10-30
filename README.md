@@ -9,7 +9,7 @@
 ---
 
 ## 🌟 Executive Summary
-
+ 
 **ApnaLocal** is a world-class, 3D-animated, AI-powered hyperlocal services marketplace designed specifically for **Jaunpur District, Uttar Pradesh**. The platform seamlessly connects residents and businesses across all **14 administrative localities** (including Olandganj, Line Bazar, Civil Lines, Shahganj, Badlapur, Machlishahr, Kerakat, and more) with government-ID-verified electricians, plumbers, AC technicians, home tutors, appliance specialists, and salon professionals.
 
 Built on an ultra-modern tech stack featuring React 18, TypeScript, Tailwind CSS v4, Three.js 3D rendering, Google Gemini AI, and Firebase Realtime Cloud Firestore, ApnaLocal eliminates the friction of traditional street contractor hiring by delivering instant AI matching, transparent rate cards, and real-time service tracking.
